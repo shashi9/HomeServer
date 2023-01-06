@@ -1,0 +1,82 @@
+sudo apt update && apt upgrade -y
+
+Default Session Manager:
+sudo update-alternatives --config x-session-manager
+
+
+CloudFlare:
+curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && 
+
+sudo dpkg -i cloudflared.deb && 
+
+sudo cloudflared service install eyJhIjoiZjM1NjVmMzA2Yzc3YmJjYTkxMTNjMGIxODUyMmQxZTIiLCJ0IjoiYzMzZTQ0MmMtMTdlNC00NTgxLTk3YjMtMjI3MzM5M2Q3ZmY5IiwicyI6IllqWmxOREUwWlRjdFlqSTBZeTAwWXprekxXRTBaV0V0TnpJek5UazVZVGhoTm1GbCJ9
+
+Root SSH:
+nano /etc/ssh/sshd_config
+PermitRootLogin yes
+systemctl restart sshd
+
+Nextcloud Port Change:
+snap set nextcloud ports.http=81
+
+XFCE4 Minamal Install:
+apt install \
+    libxfce4ui-utils \
+    thunar \
+    xfce4-appfinder \
+    xfce4-panel \
+    xfce4-session \
+    xfce4-settings \
+    xfce4-terminal \
+    xfconf \
+    xfdesktop4 \
+    xfwm4 \
+    nautilus \
+    nautilus-share \
+    xrdp
+
+PLEX:
+wget https://downloads.plex.tv/plex-media-server-new/1.30.0.6486-629d58034/debian/plexmediaserver_1.30.0.6486-629d58034_amd64.deb
+
+WEBMIN:
+wget https://onboardcloud.dl.sourceforge.net/project/webadmin/webmin/2.010/webmin_2.010_all.deb
+
+Netdata:
+wget -O /tmp/netdata-kickstart.sh https://my-netdata.io/kickstart.sh && sh /tmp/netdata-kickstart.sh --disable-telemetry
+
+QBitorrent:
+add-apt-repository ppa:qbittorrent-team/qbittorrent-stable && \
+apt install -y qbittorrent qbittorrent-nox
+
+cat > /etc/systemd/system/qbittorrent-nox.service << EOF
+[Unit]
+Description=qBittorrent Command Line Client
+After=network.target
+
+[Service]
+Type=forking
+User=root
+Group=root
+UMask=000
+ExecStart=/usr/bin/qbittorrent-nox -d --webui-port=6969
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload && \
+systemctl enable qbittorrent-nox && \
+systemctl stop qbittorrent-nox && \
+systemctl start qbittorrent-nox && \
+systemctl status qbittorrent-nox
+
+Enable HTTPS:
+
+apt install -y certbot python3-certbot-apache
+
+DOMAIN=qbit.yourdomain.tld && \
+EMAIL=qbit@yourdomain.tld && \
+certbot --apache --agree-tos --redirect --hsts --staple-ocsp --email $EMAIL -d $DOMAIN
+
+systemctl restart apache2
