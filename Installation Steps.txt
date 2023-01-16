@@ -34,10 +34,24 @@ apt install \
     nautilus \
     nautilus-share \
     xrdp \
-    gnome-disk-utility
+    gnome-disk-utility \
+    git \
+    apache2 \
+    php \
+    libapache2-mod-php \
+    php-mcrypt \
+    php-mysql \
+    apt-transport-https \
+    certbot \
+    python3-certbot-apache
+    
+sudo a2enmod php5  
+sudo service apache2 restart 
 
 PLEX:
-wget https://downloads.plex.tv/plex-media-server-new/1.30.0.6486-629d58034/debian/plexmediaserver_1.30.0.6486-629d58034_amd64.deb
+echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
+curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add -
+apt update && apt install plexmediaserver -y
 
 WEBMIN:
 wget https://onboardcloud.dl.sourceforge.net/project/webadmin/webmin/2.010/webmin_2.010_all.deb
@@ -71,13 +85,3 @@ systemctl enable qbittorrent-nox && \
 systemctl stop qbittorrent-nox && \
 systemctl start qbittorrent-nox && \
 systemctl status qbittorrent-nox
-
-Enable HTTPS:
-
-apt install -y certbot python3-certbot-apache
-
-DOMAIN=qbit.yourdomain.tld && \
-EMAIL=qbit@yourdomain.tld && \
-certbot --apache --agree-tos --redirect --hsts --staple-ocsp --email $EMAIL -d $DOMAIN
-
-systemctl restart apache2
