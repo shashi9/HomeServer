@@ -1,23 +1,9 @@
 sudo apt update && apt upgrade -y
 
-Default Session Manager:
-sudo update-alternatives --config x-session-manager
-
-
-CloudFlare:
-curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && 
-
-sudo dpkg -i cloudflared.deb && 
-
-sudo cloudflared service install eyJhIjoiZjM1NjVmMzA2Yzc3YmJjYTkxMTNjMGIxODUyMmQxZTIiLCJ0IjoiYzMzZTQ0MmMtMTdlNC00NTgxLTk3YjMtMjI3MzM5M2Q3ZmY5IiwicyI6IllqWmxOREUwWlRjdFlqSTBZeTAwWXprekxXRTBaV0V0TnpJek5UazVZVGhoTm1GbCJ9
-
-Root SSH:
+ROOT SSH:
 nano /etc/ssh/sshd_config
 PermitRootLogin yes
 systemctl restart sshd
-
-Nextcloud Port Change:
-snap set nextcloud ports.http=81
 
 XFCE4 Minamal Install:
 apt install \
@@ -51,8 +37,20 @@ apt install \
 sudo a2enmod php5  
 sudo service apache2 restart 
 
+Default Session Manager:
+sudo update-alternatives --config x-session-manager
+
+Nextcloud Port Change:
+snap set nextcloud ports.http=9876
+
+CLOUDFLARE:
+Create an free a/c, install client and enable reverse proxy. 
+
 PI-HOLE
 curl -sSL https://install.pi-hole.net | bash
+pihole -a -p   [pwd change]
+nano /etc/lighttpd/lighttpd.conf
+server.port = 80 [chnage port here in this line to your requirement] 
 
 PLEX:
 echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
