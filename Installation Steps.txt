@@ -42,10 +42,17 @@ apt install \
     php-mysql \
     apt-transport-https \
     certbot \
-    python3-certbot-apache
+    python3-certbot-apache \
+    selinux-utils \
+    selinux-basics \
+    auditd \
+    audispd-plugins
     
 sudo a2enmod php5  
 sudo service apache2 restart 
+
+PI-HOLE
+curl -sSL https://install.pi-hole.net | bash
 
 PLEX:
 echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
