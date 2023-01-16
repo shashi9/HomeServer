@@ -22,13 +22,6 @@ apt install \
     xrdp \
     gnome-disk-utility \
     git \
-    apache2 \
-    php \
-    libapache2-mod-php \
-    php-mysql \
-    apt-transport-https \
-    certbot \
-    python3-certbot-apache \
     selinux-utils \
     selinux-basics \
     auditd \
@@ -89,3 +82,11 @@ systemctl enable qbittorrent-nox && \
 systemctl stop qbittorrent-nox && \
 systemctl start qbittorrent-nox && \
 systemctl status qbittorrent-nox
+
+apt install apache2 \
+    php \
+    libapache2-mod-php \
+    php-mysql \
+    apt-transport-https \
+    certbot \
+    python3-certbot-apache \
