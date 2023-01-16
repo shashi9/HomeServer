@@ -33,7 +33,8 @@ apt install \
     xfwm4 \
     nautilus \
     nautilus-share \
-    xrdp
+    xrdp \
+    gnome-disk-utility
 
 PLEX:
 wget https://downloads.plex.tv/plex-media-server-new/1.30.0.6486-629d58034/debian/plexmediaserver_1.30.0.6486-629d58034_amd64.deb
