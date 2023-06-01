@@ -1,0 +1,5 @@
+heimdal
+plex
+jellyfin
+jackett
+qbittorrent
