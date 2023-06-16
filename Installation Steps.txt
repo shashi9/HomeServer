@@ -8,7 +8,6 @@ systemctl restart sshd
 XFCE4 Minamal Install:
 apt install \
     libxfce4ui-utils \
-    thunar \
     xfce4-appfinder \
     xfce4-panel \
     xfce4-session \
