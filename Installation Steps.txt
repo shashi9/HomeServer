@@ -24,7 +24,11 @@ apt install \
     selinux-utils \
     selinux-basics \
     auditd \
-    audispd-plugins
+    audispd-plugins \
+    network-manager \
+    network-manager-gnome
+
+sudo systemctl enable NetworkManager.service
     
 sudo a2enmod php5  
 sudo service apache2 restart 
