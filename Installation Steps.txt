@@ -26,7 +26,8 @@ apt install \
     auditd \
     audispd-plugins \
     network-manager \
-    network-manager-gnome
+    network-manager-gnome \
+    synaptic 
 
 sudo systemctl enable NetworkManager.service
     
