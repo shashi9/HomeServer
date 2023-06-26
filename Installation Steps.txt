@@ -25,10 +25,37 @@ apt install \
     selinux-basics \
     auditd \
     audispd-plugins \
-    network-manager \
-    network-manager-gnome \
     synaptic \
-    gdebi
+    gdebi \
+    openvpn \
+    unzip 
+    
+OpenVPN Setup:
+Getting config files:
+cd /etc/openvpn
+sudo wget https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip
+sudo unzip ovpn.zip
+sudo rm ovpn.zip
+cd ovpn_udp && ls -al
+
+Getting creds from text file:
+sudo cp /etc/openvpn/ovpn_udp/uk2169.nordvpn.com.udp.ovpn /etc/openvpn/uk2169.conf
+sudo nano /etc/openvpn/uk2169.conf
+
+Find line: auth-user-pass
+Change to: auth-user-pass auth.txt
+
+sudo nano auth.txt
+
+Add nordvpn user name and password in auth.txt as shown in below format.
+username
+password
+
+sudo nano /etc/default/openvpn
+AUTOSTART="all"
+
+sudo reboot
+
 
 sudo systemctl enable NetworkManager.service
     
