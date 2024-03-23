@@ -29,7 +29,11 @@ apt install \
     gdebi \
     openvpn \
     unzip 
-    
+
+CasaOS:
+curl -fsSL https://get.casaos.io | sudo bash
+
+
 OpenVPN Setup:
 Getting config files:
 cd /etc/openvpn
