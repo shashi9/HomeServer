@@ -28,7 +28,8 @@ apt install \
     synaptic \
     gdebi \
     openvpn \
-    unzip 
+    unzip \
+    featherpad
 
 CasaOS:
 curl -fsSL https://get.casaos.io | sudo bash
