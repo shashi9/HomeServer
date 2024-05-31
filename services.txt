@@ -1,4 +1,10 @@
-heimdal
+Sonarr
+kasm
+radarr
+bazarr
+lidarr
+flaresolver
+octoprint
 plex
 jellyfin
 jackett
