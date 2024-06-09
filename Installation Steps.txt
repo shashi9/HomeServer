@@ -34,6 +34,20 @@ apt install \
 CasaOS:
 curl -fsSL https://get.casaos.io | sudo bash
 
+Kasm:
+cd /tmp
+curl -O https://kasm-static-content.s3.amazonaws.com/kasm_release_1.15.0.06fdc8.tar.gz
+tar -xf kasm_release_1.15.0.06fdc8.tar.gz
+sudo bash kasm_release/install.sh
+
+Nordvpn:
+sh <(curl -sSf https://downloads.nordcdn.com/apps/linux/install.sh)
+commands:
+nordvpn login
+nordvpn set autoconnect on in164
+nordvpn set meshnet on
+nordvpn set lan-discovery enable
+
 
 OpenVPN Setup:
 Getting config files:
