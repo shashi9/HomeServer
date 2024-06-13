@@ -27,7 +27,6 @@ apt install \
     audispd-plugins \
     synaptic \
     gdebi \
-    openvpn \
     unzip \
     featherpad
 
