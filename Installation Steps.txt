@@ -1,5 +1,9 @@
 sudo apt update && apt upgrade -y
 
+To fix apt key deprecations errors on Ubuntu:
+cd /etc/apt
+cp trusted.gpg trusted.gpg.d
+
 ROOT SSH:
 nano /etc/ssh/sshd_config
 PermitRootLogin yes
