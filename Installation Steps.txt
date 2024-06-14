@@ -50,6 +50,10 @@ nordvpn login
 nordvpn set autoconnect on in164
 nordvpn set meshnet on
 nordvpn set lan-discovery enable
+nordvpn meshnet peer local allow
+nordvpn meshnet peer routing allow
+
+
 
 
 OpenVPN Setup:
