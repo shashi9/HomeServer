@@ -95,7 +95,20 @@ Nextcloud Port Change:
 snap set nextcloud ports.http=9876
 
 Jackett:
-cd /opt && f=Jackett.Binaries.LinuxAMDx64.tar.gz && release=$(wget -q https://github.com/Jackett/Jackett/releases/latest -O - | grep "title>Release" | cut -d " " -f 4) && sudo wget -Nc https://github.com/Jackett/Jackett/releases/download/$release/"$f" && sudo tar -xzf "$f" && sudo rm -f "$f" && cd Jackett* && sudo ./install_service_systemd.sh && systemctl status jackett.service && cd - && echo -e "\nVisit http://127.0.0.1:9117"
+jack@ett:/tmp$ sudo apt-get install libcurl4-openssl-dev bzip2 mono-devel
+Go to https://github.com/Jackett/Jackett/releases, download the latest Jackett.Binaries.Mono.LinuxAMD64.tar.gz (copy link):
+jack@ett::~$ cd /tmp/
+jack@ett::/tmp$ wget https://github.com/Jackett/Jackett/releases/download/v0.14.365/Jackett.Binaries.LinuxAMDx64.tar.gz
+jack@ett::/tmp$ tar -xvf Jackett.Binaries.LinuxAMDx64.tar.gz 
+jack@ett::/tmp$ sudo mkdir /opt/jackett
+jack@ett::/tmp$ sudo mv Jackett/* /opt/jackett/
+jack@ett::/tmp$ sudo chown -R box:root /opt/jackett/
+jack@ett::/tmp$ cd /opt/jackett/
+jack@ett::/opt/jackett$ ./jackett
+Runs OK? Then you can opt in to start Jackett at boot. Let us execute service systemd script to configure this:
+jack@ett::/opt/jackett$ ./jackett sudo ./install_service_systemd.sh
+jack@ett::/opt/jackett$ sudo systemctl status jackett.service
+jack@ett::/opt/jackett$ sudo systemctl enable jackett.service
 
 Firesolver:
 docker run -d \
