@@ -32,7 +32,8 @@ apt install \
     synaptic \
     gdebi \
     unzip \
-    featherpad
+    featherpad \
+    dbus-x11 (only incase of dbus issue)
 
 CasaOS:
 curl -fsSL https://get.casaos.io | sudo bash
