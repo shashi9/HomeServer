@@ -178,6 +178,12 @@ systemctl stop qbittorrent-nox && \
 systemctl start qbittorrent-nox && \
 systemctl status qbittorrent-nox
 
+Troubleshoot : Incase of password fail issue change the conf line to : WebUI\Password_PBKDF2="@ByteArray(ARQ77eY1NUZaQsuDHbIMCA==:0WMRkYTUWVT9wVvdDtHAjU9b3b7uB8NR1Gur2hmQCvCDpm39Q+PsJRJPaCU51dEiz+dTzh8qbPsL8WkFljQYFQ==)" 
+Stop the service
+add the above line
+start the service
+Now you can use "adminadmin" as password.
+
 
 Firefox:
 
