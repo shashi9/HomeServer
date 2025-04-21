@@ -184,6 +184,16 @@ add the above line
 start the service
 Now you can use "adminadmin" as password.
 
+docker volume create tautulli_config
+docker run -d \
+  --name=tautulli \
+  -p 8181:8181 \
+  -v tautulli_config:/config \
+  -e PUID=$(id -u) \
+  -e PGID=$(id -g) \
+  --restart unless-stopped \
+linuxserver/tautulli
+
 
 Firefox:
 
